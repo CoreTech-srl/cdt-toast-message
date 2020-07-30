@@ -1,3 +1,14 @@
+/**
+ * Copyright (c) 2020
+ *
+ * @summary Customizable Toast Message in JavaScript
+ * @author Christian Carelli <c.carelli@coretech.it>
+ *
+ * Created at     : 2020-07-30 18:00:00 
+ * Last modified  : 2020-07-30 18:00:00
+ */
+
+
 var cdtToastMessageDiv = document.querySelectorAll('.cdtToastMessage')[0];
 cdtToastMessageDiv.style.color = 'transparent';
 cdtToastMessageDiv.style.backgroundColor = 'transparent';
