@@ -1,20 +1,20 @@
-var cdtToastMessage = document.querySelectorAll('.cdtToastMessage')[0];
-cdtToastMessage.style.color = 'transparent';
-cdtToastMessage.style.backgroundColor = 'transparent';
-cdtToastMessage.style.transition = "0.5s";
-cdtToastMessage.style.visibility = 'hidden';
-cdtToastMessage.style.position = 'fixed';
-cdtToastMessage.style.zIndex = '9999999999';
-cdtToastMessage.style.right = '0px';
-cdtToastMessage.style.top = '0px';
-cdtToastMessage.style.fontSize = '17px';
-cdtToastMessage.style.marginLeft = '-125px';
-cdtToastMessage.style.borderRadius = '2px';
-cdtToastMessage.style.padding = '16px';
-cdtToastMessage.style.textAlign = 'center';
-cdtToastMessage.style.minWidth = '250px';
+var cdtToastMessageDiv = document.querySelectorAll('.cdtToastMessage')[0];
+cdtToastMessageDiv.style.color = 'transparent';
+cdtToastMessageDiv.style.backgroundColor = 'transparent';
+cdtToastMessageDiv.style.transition = "0.5s";
+cdtToastMessageDiv.style.visibility = 'hidden';
+cdtToastMessageDiv.style.position = 'fixed';
+cdtToastMessageDiv.style.zIndex = '9999999999';
+cdtToastMessageDiv.style.right = '0px';
+cdtToastMessageDiv.style.top = '0px';
+cdtToastMessageDiv.style.fontSize = '17px';
+cdtToastMessageDiv.style.marginLeft = '-125px';
+cdtToastMessageDiv.style.borderRadius = '2px';
+cdtToastMessageDiv.style.padding = '16px';
+cdtToastMessageDiv.style.textAlign = 'center';
+cdtToastMessageDiv.style.minWidth = '250px';
 
-function toastMessage(text, bgColor = '#333', time = 3, txColor = '#fff') {
+function cdtToastMessage(text, bgColor = 'info', time = 3, txColor = '#fff') {
     text = typeof (text) === "string" ? text : JSON.stringify(text);
 
     switch (bgColor) {
@@ -39,12 +39,12 @@ function toastMessage(text, bgColor = '#333', time = 3, txColor = '#fff') {
 
     time *= 1000;
 
-    cdtToastMessage.innerHTML = "";
+    cdtToastMessageDiv.innerHTML = "";
 
-    cdtToastMessage.innerHTML = '<span class="cdttmClose"><i class="fa fa-times"></i></span><span class="cdttmText">' + text + '</span>';
+    cdtToastMessageDiv.innerHTML = '<span class="cdttmClose"><i class="fa fa-times"></i></span><span class="cdttmText">' + text + '</span>';
 
     //cdttmClose CSS
-    var cdttmClose = cdtToastMessage.querySelectorAll('.cdttmClose')[0];
+    var cdttmClose = cdtToastMessageDiv.querySelectorAll('.cdttmClose')[0];
     cdttmClose.style.position = 'absolute';
     cdttmClose.style.right = '4px';
     cdttmClose.style.top = '2px';
@@ -53,31 +53,31 @@ function toastMessage(text, bgColor = '#333', time = 3, txColor = '#fff') {
     ///
 
     //cdtToastMessage CSS
-    cdtToastMessage.style.color = txColor;
-    cdtToastMessage.style.backgroundColor = bgColor;
-    cdtToastMessage.style.visibility = 'visible';
+    cdtToastMessageDiv.style.color = txColor;
+    cdtToastMessageDiv.style.backgroundColor = bgColor;
+    cdtToastMessageDiv.style.visibility = 'visible';
 
-    cdtToastMessage.style.transform = "translateY(60px)";
+    cdtToastMessageDiv.style.transform = "translateY(60px)";
     ///
 
     if (time > 0) {
         setTimeout(function () {
-            cdtToastMessage.style.visibility = 'hidden';
+            cdtToastMessageDiv.style.visibility = 'hidden';
 
-            cdtToastMessage.style.color = 'transparent';
-            cdtToastMessage.style.backgroundColor = 'transparent';
+            cdtToastMessageDiv.style.color = 'transparent';
+            cdtToastMessageDiv.style.backgroundColor = 'transparent';
 
-            cdtToastMessage.style.transform = "translateY(0px)";
+            cdtToastMessageDiv.style.transform = "translateY(0px)";
         }, time);
     }
     ;
 
-    cdtToastMessage.querySelectorAll('.cdttmClose')[0].onclick = function () {
-        cdtToastMessage.style.visibility = 'hidden';
+    cdtToastMessageDiv.querySelectorAll('.cdttmClose')[0].onclick = function () {
+        cdtToastMessageDiv.style.visibility = 'hidden';
 
-        cdtToastMessage.style.color = 'transparent';
-        cdtToastMessage.style.backgroundColor = 'transparent';
+        cdtToastMessageDiv.style.color = 'transparent';
+        cdtToastMessageDiv.style.backgroundColor = 'transparent';
 
-        cdtToastMessage.style.transform = "translateY(0px)";
+        cdtToastMessageDiv.style.transform = "translateY(0px)";
     };
 }
