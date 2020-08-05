@@ -10,5 +10,5 @@ BASIC USAGE:
 
 - Showing the Toast Message
 ```html
-toastMessage('This is a toast message');
+cdtToastMessage('This is a toast message');
 ```

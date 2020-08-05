@@ -3,6 +3,8 @@
  *
  * @summary Customizable Toast Message in JavaScript
  * @author Christian Carelli <c.carelli@coretech.it>
+ * @version 1.01
+ * @license MIT
  *
  * Created at     : 2020-07-30 18:00:00 
  * Last modified  : 2020-07-30 18:00:00
@@ -52,14 +54,14 @@ function cdtToastMessage(text, bgColor = 'info', time = 3, txColor = '#fff') {
 
     cdtToastMessageDiv.innerHTML = "";
 
-    cdtToastMessageDiv.innerHTML = '<span class="cdttmClose"><i class="fa fa-times"></i></span><span class="cdttmText">' + text + '</span>';
+    cdtToastMessageDiv.innerHTML = '<span class="cdttmClose">&times;</span><span class="cdttmText">' + text + '</span>';
 
     //cdttmClose CSS
     var cdttmClose = cdtToastMessageDiv.querySelectorAll('.cdttmClose')[0];
     cdttmClose.style.position = 'absolute';
     cdttmClose.style.right = '4px';
     cdttmClose.style.top = '2px';
-    cdttmClose.style.fontSize = '12px';
+    cdttmClose.style.fontSize = '15px';
     cdttmClose.style.cursor = 'pointer';
     ///
 
