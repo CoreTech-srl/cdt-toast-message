@@ -1,5 +1,5 @@
 # cdt-toast-message
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/chripto-coretech/cdt-toast-message)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/chripto-coretech/cdt-toast-message)](https://github.com/CoreTech-srl/cdt-toast-message/releases/latest)
 [![GitHub license](https://img.shields.io/github/license/CoreTech-srl/cdt-toast-message)](https://github.com/CoreTech-srl/cdt-toast-message/blob/master/LICENSE)
 
 Customizable Toast Message in JavaScript
