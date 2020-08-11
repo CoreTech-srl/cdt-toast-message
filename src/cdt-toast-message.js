@@ -3,11 +3,11 @@
  *
  * @summary Customizable Toast Message in JavaScript
  * @author Christian Carelli <c.carelli@coretech.it>
- * @version 1.02
+ * @version 1.03
  * @license MIT
  *
  * Created at     : 2020-07-30 18:00:00 
- * Last modified  : 2020-08-09 16:30:00
+ * Last modified  : 2020-08-11 23:10:00
  */
 
 
@@ -128,6 +128,8 @@ function cdtToastMessage(text, bgColor = 'info', time = 3, txColor = '#fff') {
 function cdtTMConf(params, obj = null) {
     var objToSet = obj === null ? cdtToastMessageDiv : obj;
     
+    params = cdtCheckConfParams(params);
+    
     //horizontal positioning
     switch (params.horizontalPos) {
         case 'right':
@@ -152,23 +154,55 @@ function cdtTMConf(params, obj = null) {
         case 'top':
             cdtToastMessageParam.vlPos.top = params.vertical;
             cdtToastMessageParam.vlPos.bottom = 'auto';
-            cdtToastMessageParam.vlPos.translateY.start = '0px';
-            cdtToastMessageParam.vlPos.translateY.end = '60px';
+            cdtToastMessageParam.vlPos.translateY.start = params.verticalDirectionStart;
+            cdtToastMessageParam.vlPos.translateY.end = params.verticalDirectionEnd;
             break;
         case 'center':
             cdtToastMessageParam.vlPos.top = '0px';
             cdtToastMessageParam.vlPos.bottom = 'auto';
-            cdtToastMessageParam.vlPos.translateY.start = '0px';
+            cdtToastMessageParam.vlPos.translateY.start = params.verticalDirectionStart;
             cdtToastMessageParam.vlPos.translateY.end = ((window.innerHeight/2) - (objToSet.offsetHeight/2) + parseInt(params.vertical.replace('px', ''))) + 'px';
             break;
         case 'bottom':
             cdtToastMessageParam.vlPos.top = 'auto';
             cdtToastMessageParam.vlPos.bottom = params.vertical;
-            cdtToastMessageParam.vlPos.translateY.start = '0px';
-            cdtToastMessageParam.vlPos.translateY.end = '-60px';
+            cdtToastMessageParam.vlPos.translateY.start = params.verticalDirectionStart;
+            cdtToastMessageParam.vlPos.translateY.end = '-'+params.verticalDirectionEnd;
             break;
         default:
             break;
     }
     ///
+}
+
+
+function cdtCheckUndefined(data, defaultValue){
+    return typeof data !== "undefined" ? data : defaultValue;
+}
+
+function cdtCheckConfParams(params){
+    
+    //mandatory: horizontalPos + horizontal
+    params.horizontalPos = cdtCheckUndefined(params.horizontalPos, 'default');
+    if(params.horizontalPos !== 'default'){
+        params.horizontal = cdtCheckUndefined(params.horizontal, 'default');
+        
+        if(params.horizontal === 'default'){
+            params.horizontalPos = 'default';
+        }
+    }
+    
+    //mandatory: verticalPos + vertical + params.verticalDirectionStart + params.verticalDirectionEnd
+    params.verticalPos = cdtCheckUndefined(params.verticalPos, 'default');
+    if(params.verticalPos !== 'default'){
+        params.vertical = cdtCheckUndefined(params.vertical, 'default');
+        params.verticalDirectionStart = cdtCheckUndefined(params.verticalDirectionStart, 'default');
+        params.verticalDirectionEnd = cdtCheckUndefined(params.verticalDirectionEnd, 'default');
+        
+        if(params.vertical === 'default' || params.verticalDirectionStart === 'default' || params.verticalDirectionEnd === 'default'){
+            params.verticalPos = 'default';
+        }
+    }
+    
+    return params;
 }
