@@ -10,12 +10,31 @@
         
         <div class="cdtToastMessage"></div>
         
+        <div class="exampleToastMessage" style="margin-top: 20px">
+            <textarea rows="10" cols="50">Example of message</textarea>
+            <br>
+            <button>SHOW TOAST MESSAGE &#9654;</button>
+            &emsp;
+            <input type="checkbox"> Hold
+        </div>
+        
         <script type="text/javascript" src="../src/cdt-toast-message.js"></script>
         
         <script>
             setTimeout(function () {
                 cdtToastMessage('This is a toast message');
             }, 1000);
+            
+            var holdMessage = 3;
+            
+            document.querySelectorAll('input')[0].addEventListener('change', function(e){
+                holdMessage = this.checked ? 0 : 3;
+            }, false);
+            
+            document.querySelectorAll('button')[0].addEventListener('click', function(e){
+                cdtToastMessage(document.querySelectorAll("textarea")[0].value, 'info', holdMessage);
+            }, false);
+
         </script>
     </body>
 </html>

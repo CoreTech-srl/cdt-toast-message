@@ -101,27 +101,12 @@ function cdtToastMessage(text, bgColor = 'info', time = 3, txColor = '#fff') {
 
     if (time > 0) {
         setTimeout(function () {
-            cdtToastMessageDiv.style.visibility = 'hidden';
-            
-            
-            cdtToastMessageDiv.style.boxShadow = '0px 0px';
-            cdtToastMessageDiv.style.color = 'transparent';
-            cdtToastMessageDiv.style.backgroundColor = 'transparent';
-
-            cdtToastMessageDiv.style.transform = "translateY("+cdtToastMessageParam.vlPos.translateY.start+")";
+            cdtCloseTM();
         }, time);
     }
-    ;
-
-    cdtToastMessageDiv.querySelectorAll('.cdttmClose')[0].onclick = function () {
-        cdtToastMessageDiv.style.visibility = 'hidden';
-        
-        cdtToastMessageDiv.style.boxShadow = '0px 0px';
-        cdtToastMessageDiv.style.color = 'transparent';
-        cdtToastMessageDiv.style.backgroundColor = 'transparent';
-
-        cdtToastMessageDiv.style.transform = "translateY("+cdtToastMessageParam.vlPos.translateY.start+")";
-    };
+    
+    //toast message manual close
+    cdtToastMessageDiv.querySelectorAll('.cdttmClose')[0].addEventListener('click', cdtCloseTM);
 }
 
 
@@ -205,4 +190,14 @@ function cdtCheckConfParams(params){
     }
     
     return params;
+}
+
+function cdtCloseTM() {
+    cdtToastMessageDiv.style.visibility = 'hidden';
+
+    cdtToastMessageDiv.style.boxShadow = '0px 0px';
+    cdtToastMessageDiv.style.color = 'transparent';
+    cdtToastMessageDiv.style.backgroundColor = 'transparent';
+
+    cdtToastMessageDiv.style.transform = "translateY("+cdtToastMessageParam.vlPos.translateY.start+")";
 }
