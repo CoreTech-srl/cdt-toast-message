@@ -23,3 +23,5 @@ cdtTMConf({
 ```html
 cdtToastMessage('This is a toast message');
 ```
+
+Demo page: https://coretech-srl.github.io/cdt-toast-message/example/index.html
