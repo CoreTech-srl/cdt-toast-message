@@ -42,15 +42,8 @@ cdtToastMessageDiv.style.minWidth = '250px';
 cdtToastMessageDiv.style.fontFamily = 'Arial, Helvetica, sans-serif';
 
 function cdtToastMessage(text, bgColor = 'info', time = 3, txColor = '#fff') {
-    
-    //SET CONFIGURATION
-    //horizontal position
-    cdtToastMessageDiv.style.right = cdtToastMessageParam.hzPos.right;
-    cdtToastMessageDiv.style.left = cdtToastMessageParam.hzPos.left;
-    //vertical position
-    cdtToastMessageDiv.style.top = cdtToastMessageParam.vlPos.top;
-    cdtToastMessageDiv.style.bottom = cdtToastMessageParam.vlPos.bottom;
-    ///
+
+    cdtSetConfiguration();
     
     text = typeof (text) === "string" ? text : JSON.stringify(text);
 
@@ -158,6 +151,9 @@ function cdtTMConf(params, obj = null) {
             break;
     }
     ///
+    
+    cdtSetConfiguration(true);
+    
 }
 
 
@@ -200,4 +196,24 @@ function cdtCloseTM() {
     cdtToastMessageDiv.style.backgroundColor = 'transparent';
 
     cdtToastMessageDiv.style.transform = "translateY("+cdtToastMessageParam.vlPos.translateY.start+")";
+}
+
+function cdtSetConfiguration(cdtClose = false) {
+    
+    var wait = 0;
+    
+    if (cdtClose){
+        cdtCloseTM();
+        wait = 600;
+    }
+    
+    setTimeout(function () {
+        //horizontal position
+        cdtToastMessageDiv.style.right = cdtToastMessageParam.hzPos.right;
+        cdtToastMessageDiv.style.left = cdtToastMessageParam.hzPos.left;
+        //vertical position
+        cdtToastMessageDiv.style.top = cdtToastMessageParam.vlPos.top;
+        cdtToastMessageDiv.style.bottom = cdtToastMessageParam.vlPos.bottom;
+        ///
+    }, wait);
 }

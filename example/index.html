@@ -13,14 +13,24 @@
         <div class="exampleToastMessage" style="margin-top: 20px">
             <textarea rows="10" cols="50">Example of message</textarea>
             <br>
+            <input type="checkbox"> <b>Hold</b><br><br>
+            <b>Horizontal Position:</b><br>
+            &emsp;<input type="radio" name="hposition" value="left"> Left
+            &emsp;<input type="radio" name="hposition" value="center" checked> Center
+            &emsp;<input type="radio" name="hposition" value="right"> Right
+            <br><br>
             <button>SHOW TOAST MESSAGE &#9654;</button>
-            &emsp;
-            <input type="checkbox"> Hold
         </div>
         
         <script type="text/javascript" src="../src/cdt-toast-message.js"></script>
         
         <script>
+            
+            cdtTMConf({
+                'horizontalPos': 'center',
+                'horizontal':'0px'
+            });
+            
             setTimeout(function () {
                 cdtToastMessage('This is a toast message');
             }, 1000);
@@ -34,6 +44,21 @@
             document.querySelectorAll('button')[0].addEventListener('click', function(e){
                 cdtToastMessage(document.querySelectorAll("textarea")[0].value, 'info', holdMessage);
             }, false);
+            
+            //Horizontal position
+            var rad = document.querySelectorAll('input[name="hposition"]');
+            var prev = null;
+            for (var i = 0; i < rad.length; i++) {
+                rad[i].addEventListener('change', function() {
+                    if (this !== prev) {
+                        prev = this;
+                    }
+                    cdtTMConf({
+                        'horizontalPos': this.value,
+                        'horizontal':'0px'
+                    });
+                });
+            }
 
         </script>
     </body>
